@@ -1,2 +1,2 @@
 # Gbank
-Desenvolvido utilizando, Sockets, PyQt5 e MySql.
+Desenvolvido utilizando, Sockets, PyQt5, MySql e Python.
