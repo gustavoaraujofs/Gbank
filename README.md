@@ -1,2 +1,2 @@
 # Gbank
-Mini sistema bancário, desenvolvido para a disciplina de POO II
+Desenvolvido utilizando Sockets, PyQt5 e MySql.
