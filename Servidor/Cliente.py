@@ -1,4 +1,3 @@
-from Historico import Historico
 class Cliente:
 
     __slots__ = ['_name', '_usuario', '_cpf', '_senha', '_sal', 'history']

@@ -33,9 +33,6 @@ class ClienteThread(threading.Thread):
                 valor = float(valor)
                 objeto = int(objeto)
                 saldo = float(saldo)
-                print(saldo)
-                print(objeto)
-                print(valor)
                 cad.deposita(saldo, objeto, valor)
 
             elif recebe[0] == 'atualiza':
@@ -58,9 +55,6 @@ class ClienteThread(threading.Thread):
                 valor = float(valor)
                 objeto = int(objeto)
                 saldo = float(saldo)
-                print(saldo)
-                print(objeto)
-                print(valor)
                 cad.sacar(saldo, objeto, valor)
 
             elif recebe[0] == 'numero':
@@ -104,8 +98,6 @@ class ClienteThread(threading.Thread):
                 usuario = str(usuario)
                 senha = str(senha)
                 retorno = Cliente(nome, cpf, usuario, senha)
-                print(retorno)
-                print(type(retorno))
                 client = retorno
 
             elif recebe[0] == 'cadastro':
