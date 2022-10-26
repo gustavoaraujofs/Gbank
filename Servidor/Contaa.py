@@ -73,7 +73,6 @@ class Conta:
     def titularr(self, novo):
         self._tit = novo
 
-
     def deposita(self, valor, objeto, valorr):
         self.cursor.execute(f'UPDATE Contas SET saldo = {valor} WHERE id = {objeto}')
         self.cursor.execute(f'UPDATE Contas SET transacoes = concat(transacoes, "\n{f"Deposito realizado no valor de {valorr} R$"}") WHERE id = {objeto}')
