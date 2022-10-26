@@ -6,7 +6,7 @@ class Conta:
     __slots__ = ['conexao', 'cursor', 'sql', '_num', '_sal', '_tit', 'history']
     def __init__(self):
         self.history = Historico()
-        self.conexao = mysql.connect(host="localhost", db="POOII", user="root", passwd="#Gust@vo20")
+        self.conexao = mysql.connect(host="", db="", user="", passwd="")
         self.cursor = self.conexao.cursor()
         self.sql = """CREATE TABLE IF NOT EXISTS Contas (id integer AUTO_INCREMENT PRIMARY KEY,
         nome text NOT NULL, cpf text NOT NULL, usuario text NOT NULL, senha VARCHAR(32) NOT NULL,
