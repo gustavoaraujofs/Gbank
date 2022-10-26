@@ -1,4 +1,3 @@
-import ast
 import socket
 
 from tela_cadastro import Tela_Cadastro
@@ -69,7 +68,6 @@ class Main(QMainWindow,Ui_Main):
     def __init__(self, parent = None):
         super(Main, self).__init__(parent)
         self.setupUi(self)
-        #self.cad = Conta()
         self.tela_login.pushButton_2.clicked.connect(self.abrirtelacadastro)
         self.tela_login.pushButton.clicked.connect(self.BotaoLogin)
         self.tela_cadastro.pushButton.clicked.connect(self.botaoCadastra)
@@ -102,11 +100,8 @@ class Main(QMainWindow,Ui_Main):
                 client_socket.send(f'cadastrar,{usuario}'.encode())
                 retorno = client_socket.recv(10240)
                 retorno = eval(retorno)
-                #retorno = self.cad.usuario(usuario)
                 if(retorno == None):
                     client_socket.send(f'cliente,{nome},{cpf},{usuario},{senha}'.encode())
-                    #retorno = client_socket.recv(1024)
-                    #cliente = Cliente(nome, cpf, usuario, senha)
                     client_socket.send(f'cadastro'.encode())
                     retorno = client_socket.recv(10240)
                     retorno = eval(retorno)
@@ -134,7 +129,6 @@ class Main(QMainWindow,Ui_Main):
             client_socket.send(f'login,{usuario},{senha}'.encode())
             retorno = client_socket.recv(10240)
             retorno = eval(retorno)
-            #retorno = self.cad.login(usuario, senha)
             Main.objeto = retorno
             if (retorno != None):
                 self.QtStack.setCurrentIndex(2)
@@ -146,7 +140,6 @@ class Main(QMainWindow,Ui_Main):
     def extrato_main(self):
         self.QtStack.setCurrentIndex(5)
         client_socket.send(f'extrato,{Main.objeto[0]}'.encode())
-        #extrato = self.cad.extrato(Main.objeto[0])
         extrato = client_socket.recv(10240)
         extrato = eval(extrato)
         extrato = '\n'.join(extrato)
@@ -163,8 +156,6 @@ class Main(QMainWindow,Ui_Main):
             retorno = client_socket.recv(10240)
             retorno = eval(retorno)
             Main.objeto = retorno
-            #self.cad.deposita(saldo, Main.objeto, valorr)
-            #Main.objeto = self.cad.atualiza(Main.objeto[0])
             QMessageBox.information(None, 'POOII', 'Valor depositado com sucesso!')
             self.tela_deposita.lineEdit.setText('')
             self.QtStack.setCurrentIndex(2)
@@ -182,8 +173,6 @@ class Main(QMainWindow,Ui_Main):
                 retorno = client_socket.recv(10240)
                 retorno = eval(retorno)
                 Main.objeto = retorno
-                #self.cad.sacar(saldo, Main.objeto, valorr)
-                #Main.objeto = self.cad.atualiza(Main.objeto[0])
                 QMessageBox.information(None, 'POOII', 'Valor sacado com sucesso!')
                 self.tela_sacar.lineEdit.setText('')
                 self.QtStack.setCurrentIndex(2)
@@ -201,8 +190,6 @@ class Main(QMainWindow,Ui_Main):
             client_socket.send(f'numero,{numeroo}'.encode())
             retorno = client_socket.recv(10240)
             retorno = eval(retorno)
-            #print(retorno)
-            #retorno = self.cad.numero_conta(numeroo)
             Main.objeto1 = retorno
             if(retorno != None):
                 if (retorno[0] != Main.objeto[0]):
@@ -214,8 +201,6 @@ class Main(QMainWindow,Ui_Main):
                         retorno = client_socket.recv(10240)
                         retorno = eval(retorno)
                         Main.objeto = retorno
-                        #self.cad.transfere(saldo, Main.objeto, saldo1, Main.objeto1, valorr)
-                        #Main.objeto = self.cad.atualiza(Main.objeto[0])
                         QMessageBox.information(None, 'POOII', 'Transferência realizada com sucesso!')
                         self.tela_transferencia.lineEdit.setText('')
                         self.tela_transferencia.lineEdit_2.setText('')

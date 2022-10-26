@@ -8,7 +8,6 @@ class Cliente:
         self._usuario = usuario
         self._senha = senha
         self._sal = 0
-        #self.history = Historico()
 
     @property
     def nome(self):

@@ -15,7 +15,6 @@ class ClienteThread(threading.Thread):
         client = ''
         while True:
             recebe = self.csocket.recv(10240).decode()
-            #print(recebe)
             recebe = recebe.split(',')
             if recebe[0] == 'bye':
                 break
@@ -108,19 +107,11 @@ class ClienteThread(threading.Thread):
                 print(retorno)
                 print(type(retorno))
                 client = retorno
-                # retorno = str(retorno)
-                # con.send(retorno.encode())
 
             elif recebe[0] == 'cadastro':
                 retorno = cad.cadastrar(client)
                 retorno = str(retorno)
                 self.csocket.send(retorno.encode())
-
-            '''elif con:
-                print('Cliente desconectado!')
-                print('Aguardando outra conexão...')
-                con, cliente = serv_socket.accept()
-                print('Conectado')'''
 
         print("Client at ", clientAddress, "Disconnected...\n")
 
